@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartShop - Магазин гаджетов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        header {
+            background-color: #222;
+            color: white;
+            padding: 15px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .section {
+            display: none;
+            padding: 20px;
+        }
+        .active {
+            display: block;
+        }
+        .category {
+            background: white;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .product {
+            background: white;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block;
+            width: 250px;
+        }
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .price {
+            font-size: 20px;
+            color: #007bff;
+            font-weight: bold;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function showCategory(categoryId) {
+            document.querySelectorAll('.category-products').forEach(category => {
+                category.style.display = 'none';
+            });
+            document.getElementById(categoryId).style.display = 'block';
+        }
+    </script>
+</head>
+<body onload="showSection('home')">
+
+<header>
+    <h1>SmartShop</h1>
+    <nav>
+        <ul>
+            <li><a onclick="showSection('home')">Главная</a></li>
+            <li><a onclick="showSection('discounts')">Товары со скидками</a></li>
+            <li><a onclick="showSection('contact')">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="home" class="section active">
+    <h2>Выберите категорию</h2>
+    <div class="category" onclick="showCategory('phones')">📱 Смартфоны</div>
+    <div class="category" onclick="showCategory('watches')">⌚ Смарт-часы</div>
+    <div class="category" onclick="showCategory('headphones')">🎧 Наушники</div>
+    
+    <div id="phones" class="category-products" style="display: none;">
+        <h3>Смартфоны</h3>
+        <div class="product">
+            <img src="iphone14.jpg" alt="iPhone 14">
+            <h4>iPhone 14</h4>
+            <p>Флагманский смартфон от Apple.</p>
+            <span class="price">120 000₸</span>
+        </div>
+        <div class="product">
+            <img src="galaxy_s23.jpg" alt="Samsung Galaxy S23">
+            <h4>Samsung Galaxy S23</h4>
+            <p>Мощный смартфон на Android.</p>
+            <span class="price">110 000₸</span>
+        </div>
+    </div>
+
+    <div id="watches" class="category-products" style="display: none;">
+        <h3>Смарт-часы</h3>
+        <div class="product">
+            <img src="apple_watch_7.jpg" alt="Apple Watch 7">
+            <h4>Apple Watch 7</h4>
+            <p>Продвинутые часы для iPhone.</p>
+            <span class="price">50 000₸</span>
+        </div>
+        <div class="product">
+            <img src="galaxy_watch.jpg" alt="Samsung Galaxy Watch">
+            <h4>Samsung Galaxy Watch</h4>
+            <p>Лучший вариант для Android.</p>
+            <span class="price">45 000₸</span>
+        </div>
+    </div>
+
+    <div id="headphones" class="category-products" style="display: none;">
+        <h3>Наушники</h3>
+        <div class="product">
+            <img src="airpods_pro.jpg" alt="AirPods Pro">
+            <h4>AirPods Pro</h4>
+            <p>Беспроводные наушники Apple.</p>
+            <span class="price">70 000₸</span>
+        </div>
+        <div class="product">
+            <img src="galaxy_buds.jpg" alt="Galaxy Buds 2">
+            <h4>Galaxy Buds 2</h4>
+            <p>Качественный звук от Samsung.</p>
+            <span class="price">60 000₸</span>
+        </div>
+    </div>
+</section>
+
+<section id="discounts" class="section">
+    <h2>Товары со скидками</h2>
+    <div class="product">
+        <img src="redmi_note_12.jpg" alt="Xiaomi Redmi Note 12">
+        <h4>Xiaomi Redmi Note 12</h4>
+        <p>Хит продаж среди бюджетников.</p>
+        <span class="price">Старая цена: <s>80 000₸</s> <br> Новая цена: 65 000₸</span>
+    </div>
+    <div class="product">
+        <img src="huawei_freebuds.jpg" alt="Huawei FreeBuds">
+        <h4>Huawei FreeBuds</h4>
+        <p>Отличные беспроводные наушники.</p>
+        <span class="price">Старая цена: <s>40 000₸</s> <br> Новая цена: 30 000₸</span>
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <h2>Свяжитесь с нами</h2>
+    <form>
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="email" placeholder="Ваш Email" required>
+        <textarea placeholder="Ваше сообщение" required></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+</section>
+
+</body>
+</html>
